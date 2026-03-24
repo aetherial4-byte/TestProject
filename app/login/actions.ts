@@ -24,8 +24,6 @@ export async function login(prevState: any, formData: FormData) {
 
   const { email, password } = result.data;
 
-  const users1 = await prisma.usuarios.findMany();
-  console.log(users1);
   const user = await prisma.usuarios.findFirst({
     where: {
       mail: email,
