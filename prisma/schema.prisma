@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model usuarios {
+  id         Int       @id @default(autoincrement())
+  nombre     String    @db.VarChar(100)
+  apellido   String    @db.VarChar(100)
+  edad       Int?
+  mail       String    @unique @db.VarChar(150)
+  contrasena String
+  rol        String    @default("usuario") @db.VarChar(50)
+  creado_en  DateTime? @default(now()) @db.Timestamp(6)
+}
